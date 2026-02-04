@@ -1,11 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-@Disabled
+
+
 @TeleOp
 public class GamePadPractice extends OpMode {
+
     @Override
     public void init() {
 
@@ -19,7 +20,7 @@ public class GamePadPractice extends OpMode {
 
         telemetry.addData("x", gamepad1.left_stick_x);
         telemetry.addData("y", speedForward);
-        telemetry.addData("a button", gamepad1.a);
+        telemetry.addData("a button", gamepad1.a); // verifier le nplan d'attribution des touches, car la c'est la touche arrière M2
 
         if (leftx > 0){
             telemetry.addData("Left stick", "est en avant");
