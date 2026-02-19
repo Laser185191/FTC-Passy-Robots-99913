@@ -33,7 +33,7 @@ public class LaunchOpMode extends OpMode{
     public void loop() {
         // lit l'état du bouton
         boolean currentButtonState = gamepad1.a;
-        telemetry.addData("X value :", gamepad1.a);
+        telemetry.addData("x value :", gamepad1.a);
 
 
         if (currentButtonState && !lastButtonState) {
@@ -42,7 +42,7 @@ public class LaunchOpMode extends OpMode{
 
         // Commande du moteur
         if (motorOn) {
-            motorspeed = 0.3;
+            motorspeed = 0.6;
             launch.launch(motorspeed);
         }
 
@@ -55,7 +55,7 @@ public class LaunchOpMode extends OpMode{
         lastButtonState = currentButtonState;
     }
 }
-
+            // test github 1
 
 
         /*if (gamepad1.crossWasPressed()) {
