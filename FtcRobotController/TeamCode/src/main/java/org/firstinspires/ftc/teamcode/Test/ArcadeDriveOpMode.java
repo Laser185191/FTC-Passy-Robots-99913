@@ -1,11 +1,10 @@
 // A tester Mercredi
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.mechanisms.ArcadeDrive;
-import org.opencv.core.Mat;
 
 @TeleOp
 public class ArcadeDriveOpMode extends OpMode {
@@ -38,7 +37,7 @@ public class ArcadeDriveOpMode extends OpMode {
         }
 
         // Circularisation :
-        double magnitude = Math.sqrt(x*x+y*y);
+        double magnitude = Math.sqrt(x*x + y*y);
         if (magnitude > 1.0){
             x /= magnitude;
             y /= magnitude;
@@ -56,8 +55,8 @@ public class ArcadeDriveOpMode extends OpMode {
         ------------------------------------------------------------------------------------------*/
         if (gamepad1.circle){
 
-            acceleration = y / 2;
-            rotation = x / 2;
+            acceleration = y ;
+            rotation = x ;
 
             drive.drive(acceleration,rotation);
         }

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -6,9 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
-
-import org.firstinspires.ftc.teamcode.mechanisms.Launcher;
-
+// tester pour le launch ...
 
 @Autonomous
 public class AutoTest extends LinearOpMode { // permet de faire tourner le code une seule fois
@@ -33,8 +31,6 @@ public class AutoTest extends LinearOpMode { // permet de faire tourner le code 
 
     private DcMotor leftmotor; // DcmotorEx, permet l'accès a la fonction velocite
     private DcMotor rightmotor;
-
-    private DcMotor launchMotor;
 
     private int leftPos ;
     private int rightPos ;
@@ -65,13 +61,13 @@ public class AutoTest extends LinearOpMode { // permet de faire tourner le code 
 
         leftmotor = hardwareMap.get(DcMotor.class, "moteur_gauche");
         rightmotor = hardwareMap.get(DcMotor.class,"moteur_droit");
-        launchMotor = hardwareMap.get(DcMotor.class,"moteur-lanceur");
+
 
         rightmotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         rightmotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftmotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        launchMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
 
         leftPos = 0;
         rightPos = 0;
@@ -85,10 +81,12 @@ public class AutoTest extends LinearOpMode { // permet de faire tourner le code 
                                     Action du robot :
 
     ==============================================================================================*/
-        drive(1000,1000, 0.5);// on rentre ici la distance gauche, la droite et la vitesse :
-        drive(720, -720, 0.45); // devrait faire tourner a gauche
+        drive(1000,1000, 1);// on rentre ici la distance gauche, la droite et la vitesse :
+        drive(780, -780, 1); // devrait faire tourner a gauche Full 36
+        drive(360,360,1);// il ya un overshoot de au moins 30° == corrigé
+        drive(1000,1000,1); // devrait revenir a la case départ
 
-        
+
 
 
     }
@@ -119,20 +117,12 @@ public class AutoTest extends LinearOpMode { // permet de faire tourner le code 
             telemetry.addData("distance moteur droit mm", rightDistance);
         }
     }
-
+    }
 // attention renvoie une erreure a la fin
 
-    private void launch(double motorLaunchSpeed, double angleLancer){
 
 
 
-        launchMotor.setPower(motorLaunchSpeed);
 
 
-        while (opModeIsActive() && launchMotor.isBusy()){
-            idle();
-        }
-    }
-
-}
 

@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------------------------------------------
                                Autonomous_Cycle_1_RED
 --------------------------------------------------------------------------------------------------*/
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -11,8 +11,6 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.mechanisms.Launcher;
-
-import java.util.concurrent.TimeUnit;
 
 @Autonomous
 public class Autonomous1 extends OpMode {

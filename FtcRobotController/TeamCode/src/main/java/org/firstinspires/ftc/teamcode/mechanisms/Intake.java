@@ -9,8 +9,8 @@ public class Intake  {
     private DcMotor intakeMotor;
 
 
-    public void init(HardwareMap hwMap) {
-        intakeMotor = hwMap.get(DcMotor.class,"moteur_intake");
+    public void init(HardwareMap hwMapIntake) {
+        intakeMotor = hwMapIntake.get(DcMotor.class,"moteur_intake");
         intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 

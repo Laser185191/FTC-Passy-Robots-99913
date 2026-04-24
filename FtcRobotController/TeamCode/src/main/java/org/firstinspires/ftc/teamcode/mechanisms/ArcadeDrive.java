@@ -9,8 +9,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class ArcadeDrive {
     private DcMotor leftMotor, rigthMotor ;
 
-    double rigthCorrection = 1.05; // valeur a ajuster avec des test
-
+    double rigthCorrection = 1; // valeur a ajuster avec des test la laisser a 1 pour voir quand on est pleinne balle
 
     public void init(HardwareMap hwMap){ // Permet de reperer le matériel physique et d'orienter les commandes vers eux
         leftMotor = hwMap.get(DcMotor.class, "moteur_gauche");
@@ -23,8 +22,8 @@ public class ArcadeDrive {
         rigthMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
     public void drive(double acceleration, double rotation){
-        double leftPower = (acceleration - rotation)/2; // permet d'avancer et tourner en meme temps
-        double rightPower = (acceleration + rotation)*rigthCorrection/2; // meme principe, mais emepeche que le robots tourne sur lui meme
+        double leftPower = (acceleration - rotation)*rigthCorrection; // permet d'avancer et tourner en meme temps
+        double rightPower = (acceleration + rotation)*rigthCorrection; // meme principe, mais emepeche que le robots tourne sur lui meme
         double largest = Math.max(Math.abs(leftPower),Math.abs(rightPower)); // Permet au deux moteurs de rouler a la meme vitesse
         if (largest > 1.0){
             leftPower /= largest;
