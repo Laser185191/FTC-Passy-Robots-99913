@@ -1,21 +1,21 @@
 package org.firstinspires.ftc.teamcode.mechanisms;
 
 
-import com.qualcomm.robotcore.hardware.DcMotor;
+
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Intake  {
 
-    private DcMotor intakeMotor;
+    private DcMotorSimple intakeMotor;
 
 
     public void init(HardwareMap hwMapIntake) {
-        intakeMotor = hwMapIntake.get(DcMotor.class,"moteur_intake");
-        intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        intakeMotor = hwMapIntake.get(DcMotorSimple.class,"moteurIntake");
+        intakeMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public void intake(double intakeSpeed) {
-        double intakePower = intakeSpeed;
-        intakeMotor.setPower(intakePower);
+        intakeMotor.setPower(intakeSpeed);
     }
 }

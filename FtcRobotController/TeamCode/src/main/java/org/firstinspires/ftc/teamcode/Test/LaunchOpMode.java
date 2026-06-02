@@ -47,7 +47,7 @@ public class LaunchOpMode extends OpMode{
 
         // Commande du moteur
         if (motorOnLaunch) {
-            motorSpeedLaunch =-0.5; // besoin du maximum de vitesse pour lancer
+            motorSpeedLaunch = 0.6 ; // besoin du maximum de vitesse pour lancer
             launch.launch(motorSpeedLaunch);
         }
 

@@ -6,6 +6,13 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
+
+import org.firstinspires.ftc.teamcode.mechanisms.AprilTagsWebcam;
+import org.firstinspires.ftc.teamcode.mechanisms.Bras;
+import org.firstinspires.ftc.teamcode.mechanisms.Hood;
+import org.firstinspires.ftc.teamcode.mechanisms.Intake;
+import org.firstinspires.ftc.teamcode.mechanisms.Launcher;
+import org.firstinspires.ftc.teamcode.mechanisms.Tourelle;
 // tester pour le launch ...
 
 @Autonomous
@@ -34,12 +41,21 @@ public class AutoTest extends LinearOpMode { // permet de faire tourner le code 
 
     private int leftPos ;
     private int rightPos ;
+    // utilisation de la caméra pour la position de la tourelle
+    private double angle;
+    private double distance;
+    private double LaunchPower;
+
 
     /*----------------------------------------------------------------------------------------------
                                  Importation des classes pour lancer, et ou prendre les balles :
     ----------------------------------------------------------------------------------------------*/
-
-
+    Intake intake = new Intake();
+    Launcher launch = new Launcher();
+    Hood hood = new Hood();
+    Tourelle tourelle = new Tourelle();
+    Bras bras = new Bras();
+    AprilTagsWebcam camera = new AprilTagsWebcam();
 
     @Override
     public void runOpMode() {
@@ -81,11 +97,9 @@ public class AutoTest extends LinearOpMode { // permet de faire tourner le code 
                                     Action du robot :
 
     ==============================================================================================*/
-        drive(1000,1000, 1);// on rentre ici la distance gauche, la droite et la vitesse :
-        drive(780, -780, 1); // devrait faire tourner a gauche Full 36
-        drive(360,360,1);// il ya un overshoot de au moins 30° == corrigé
-        drive(1000,1000,1); // devrait revenir a la case départ
-
+        drive(2400,2400, 1);// on rentre ici la distance gauche, la droite et la vitesse :
+                                            // oriente la tourelle
+        launch(0.6,0.2);    // gere ici le lancer
 
 
 
@@ -99,7 +113,7 @@ public class AutoTest extends LinearOpMode { // permet de faire tourner le code 
     private void drive(int leftDistance, int rightDistance, double power) {
 
         leftPos += (int) (leftDistance * trRoueParMm);
-        rightPos += (int) (rightDistance * trRoueParMm);  // permet déviter la rénitialisation des encodeurs a pres chaque manip... en ajoutant ainsi, la position actuelle a la précédente.
+        rightPos += (int) (rightDistance * trRoueParMm);  // permet déviter la rénitialisation des encodeurs apres chaque manip... en ajoutant ainsi, la position actuelle a la précédente.
 
         leftmotor.setTargetPosition(leftPos);
         rightmotor.setTargetPosition(rightPos);
@@ -117,7 +131,28 @@ public class AutoTest extends LinearOpMode { // permet de faire tourner le code 
             telemetry.addData("distance moteur droit mm", rightDistance);
         }
     }
+    private void launch(double power, double posHood){
+        launch.launch(power);
+        hood.loop(posHood);
+        intake.intake(0.5);
+        bras.loop(0.5);
+        bras.loop(0);
+        sleep(1000);
+        bras.loop(0.5);
+        bras.loop(0);
+        sleep(1000);
+        bras.loop(0.5);
+        bras.loop(0);
+        sleep(1000);
     }
+    private void tourelle(){
+
+    }
+}
+
+
+
+
 // attention renvoie une erreure a la fin
 
 

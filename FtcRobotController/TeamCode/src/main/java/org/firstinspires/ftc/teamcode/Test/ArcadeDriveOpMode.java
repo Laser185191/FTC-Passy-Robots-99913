@@ -13,7 +13,7 @@ public class ArcadeDriveOpMode extends OpMode {
     double acceleration, rotation;
 
     // Réglages :
-    final double zoneMorte = 0.08; // Trouve en ligne, depends de la sensation que l'on veux mieux décris dans le rapport
+    final double zoneMorte = 0.08;
     final double tauxRotation = 0.5;
 
     @Override

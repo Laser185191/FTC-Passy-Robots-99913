@@ -7,7 +7,7 @@ public class ServoTourelle {
         private Servo servoPos;
 
         public void init(HardwareMap hwMap){
-            servoPos = hwMap.get(Servo.class,"servo_tourelle");
+            servoPos = hwMap.get(Servo.class,"servoBras");
 
         }
         public void setServoPos(double angle){

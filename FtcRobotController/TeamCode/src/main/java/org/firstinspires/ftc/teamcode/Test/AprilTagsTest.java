@@ -70,12 +70,10 @@ public class AprilTagsTest extends LinearOpMode {
                     leftMotor.setPower(turn);
                     rightMotor.setPower(-turn);   // changer le - si ca ne tourne pas dans le bon sens
                 }
-
                 // ----------------------
                 // GESTION DISTANCE
                 // ----------------------
                 else {
-
                     targetDistance = 1000;  // 1 m
                     distanceError = distance - targetDistance;
 

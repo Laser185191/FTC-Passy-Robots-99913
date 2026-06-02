@@ -7,10 +7,8 @@ import org.firstinspires.ftc.teamcode.mechanisms.Intake;
 
 @TeleOp
 public class IntakeOpMode extends OpMode {
-
     Intake intake = new Intake();
-
-    double motorspeedIntake;
+    double speedIntake;
     boolean motorOnIntake = false;
     boolean lastButtonStateIntake = false;
 
@@ -26,22 +24,18 @@ public class IntakeOpMode extends OpMode {
         boolean currentButtonStateIntake = gamepad1.left_bumper;
         telemetry.addData("gachette gauche:",gamepad1.left_bumper);
 
-
         if (currentButtonStateIntake && !lastButtonStateIntake) {
             motorOnIntake = !motorOnIntake;
         }
-
         // Commande du moteur
         if (motorOnIntake) {
-            motorspeedIntake =-0.5; // besoin du maximum de vitesse pour lancer
-            intake.intake(motorspeedIntake);
+            speedIntake = 0.9; // besoin du maximum de vitesse pour lancer
+            intake.intake(speedIntake);
         }
-
             else {
-                motorspeedIntake = 0;
-                intake.intake(motorspeedIntake);
+                speedIntake = 0;
+                intake.intake(speedIntake);
             }
-
         // Sauvegarde de l'état du bouton
         lastButtonStateIntake = currentButtonStateIntake;
 
