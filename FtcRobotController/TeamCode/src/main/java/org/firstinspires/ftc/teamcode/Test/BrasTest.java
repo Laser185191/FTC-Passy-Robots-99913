@@ -18,10 +18,12 @@ public class BrasTest extends OpMode {
     @Override
     public void loop(){
         if(gamepad1.a){
-            bras.loop(0.5);
+            bras.loop(1); // position haute
+            telemetry.addData("Bras pos : ","haute");
         }
         if(gamepad1.b){
-            bras.loop(0);
+            bras.loop(0);  // position basse
+            telemetry.addData("Bras pos : ","Basse");
         }
 
     }

@@ -24,6 +24,8 @@ public class IntakeOpMode extends OpMode {
         boolean currentButtonStateIntake = gamepad1.left_bumper;
         telemetry.addData("gachette gauche:",gamepad1.left_bumper);
 
+
+
         if (currentButtonStateIntake && !lastButtonStateIntake) {
             motorOnIntake = !motorOnIntake;
         }

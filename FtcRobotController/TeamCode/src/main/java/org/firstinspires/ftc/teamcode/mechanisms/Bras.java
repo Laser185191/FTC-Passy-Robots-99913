@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class Bras {
     private Servo servoBras;
-
     public void init(HardwareMap hwMap){
         servoBras = hwMap.get(Servo.class,"servoBras");
     }

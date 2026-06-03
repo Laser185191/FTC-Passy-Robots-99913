@@ -160,7 +160,7 @@ ________________________________________________________________________________
                                     Partie Tourelle :                       Joystik droit
      _____________________________________________________________________________________________*/
 
-        if (gamepad1.ri) {
+        if (gamepad1.right_bumper) {
             tourelle.loop(position_90, power);
             telemetry.addData("Position", position_90);
         }
